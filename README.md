@@ -1,7 +1,6 @@
 # Clone Directory and start working!
 
 ## Creating an App for 2nd Semester @DHBW Mannheim
-## Available Scripts
 
 ### If using VsCode or Atom or whatever pls use a Linter and the extension Prettier for uniformity!
 
