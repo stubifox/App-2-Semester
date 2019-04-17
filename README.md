@@ -41,7 +41,7 @@ Inside the class simply paste your copied code from Material-Ui into the class.
 
 Then finally to use it in the App Component, which connects it all, import your class 
 
-##### `import [generic Name because default] from './[ path where file is found] '`
+##### `import <generic Name because default> from './<path where file (.jsx) is found> '`
 
 ### `npm test`
 
