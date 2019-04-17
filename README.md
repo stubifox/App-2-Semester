@@ -5,6 +5,12 @@
 
 In the project directory, you can run:
 
+#### This is also available with `yarn`.
+
+To install yarn simply write 
+
+### `npm install -g yarn`
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
