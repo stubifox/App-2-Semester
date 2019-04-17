@@ -13,7 +13,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### Using Material-Ui!:
+## Using Material-Ui!:
 
 Material UI is a Component Library based on Google's Web Standards and you can easily choose Components on their Website
 
@@ -30,7 +30,7 @@ Inside the class simply paste your copied code from Material-Ui into the class.
 
 Then finally to use it in the App Component, which connects it all, import your class 
 
-#### `import [generic Name because default] from './[ path where file is found] '`
+##### `import [generic Name because default] from './[ path where file is found] '`
 
 ### `npm test`
 
