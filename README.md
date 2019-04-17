@@ -11,7 +11,7 @@ In the project directory, you can run:
 
 To install yarn simply write 
 
-### `npm install -g yarn`
+### `npm install yarn`
 
 ### `yarn start`
 
