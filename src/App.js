@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import rocket from './ressources/Rocket.png';
 import './App.css';
 
 class App extends Component {
@@ -7,18 +7,22 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={rocket} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Create Components and adding them to <code>src/App.js</code> and save to reload.
+
+
           </p>
+            Please don't create Components inside <code>App.js</code> for clarity purposes!
           <a
             className="App-link"
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+          Click <code>this</code> Link to learn React with it's States and Props.
           </a>
+          If you have questions write them in Trello or per Whatsapp.
         </header>
       </div>
     );
