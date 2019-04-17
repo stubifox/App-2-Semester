@@ -6,6 +6,8 @@
 
 In the project directory, you can run:
 
+### `npm install` for installing all dependencies and node modules locally
+
 ### `npm start`
 
 #### This is also available with `yarn`.
