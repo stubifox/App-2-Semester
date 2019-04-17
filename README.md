@@ -34,7 +34,7 @@ Here you have a variety of Components for example Buttons, which you can use.
 Simply create a new `.jsx` File and Name it to its purpose. For example name it DrawBar if its a Draw-Bar.
 Then create a class with a specific Name and `export` it as a `default`.
 Inside the class simply paste your copied code from Material-Ui into the class. 
-*Don't* copy the imports within the class, do it above.
+**Don't** copy the imports within the class, do it above.
 
 Then finally to use it in the App Component, which connects it all, import your class 
 
