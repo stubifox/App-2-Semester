@@ -13,4 +13,21 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.card {
+  height: 30ch;
+  width: 75ch;
+  background: grey;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.5s;
+  will-change: transform;
+  border: 15px solid #212121;
+}
+
+.card:hover {
+  box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.6);
+}
+
 

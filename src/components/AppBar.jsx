@@ -16,11 +16,11 @@ class SimpleAppBar extends Component {
     render(){
 
         return (
-          <div>
+          <div style={{position: "fixed" , width: '100%'}}>
             <AppBar position="static" color="default">
               <Toolbar>
                 <Typography variant="h6" color="inherit">
-                  Photos
+                  App 2 Semester LUL
                 </Typography>
                 <NavBar {...this.props}/>
               </Toolbar>

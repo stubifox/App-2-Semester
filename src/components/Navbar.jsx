@@ -7,12 +7,13 @@ export default class ChangeAnimation extends React.Component {
   render() {
       const {tab, changeTab} = this.props;
     return (
-      <div className="App">
+      <div className="App" >
         <Tabs
           indicatorColor="secondary"
           textColor="inherit"
           value={tab}
           onChange={changeTab}
+          centered
         >
           <Tab label="Studenplan" />
           <Tab label="Wetter" />
