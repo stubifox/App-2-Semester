@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "../App.css";
-import theme from "../theme.jsx";
+import theme from "../utils/theme.jsx";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 
-export default class AnimatedFrame extends Component {
+export default class Iframe extends Component {
   render() {
     const { lecture_url } = this.props;
     return (

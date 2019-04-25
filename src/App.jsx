@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import "./App.css";
-import theme from "./theme.jsx";
+import theme from "./utils/theme.jsx";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import Appbar from "./components/AppBar.jsx";
 import RenderComponent from "./components/RenderBased.jsx";
+import Button from "@material-ui/core/Button";
+import { fetchData } from "./utils/FetchAnyData";
 
 class App extends Component {
   state = {
     tab: 0,
     lecture_url: String,
-    default_url: "https://vorlesungsplan.dhbw-mannheim.de/index.php?action=list&gid=3067001",
+    default_url:
+      "https://vorlesungsplan.dhbw-mannheim.de/index.php?action=list&gid=3067001",
     city: String,
     remember: false
   };
@@ -21,6 +24,18 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <RenderComponent {...this.state} />
+            <Button
+              variant="contained"
+              onClick={() =>
+                console.log(
+                  fetchData(this.state.default_url, "text", {
+                    mode: "no-cors"
+                  })
+                )
+              }
+            >
+              Test Fetching
+            </Button>
           </header>
         </div>
       </MuiThemeProvider>
@@ -28,9 +43,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const existing = localStorage.getItem("lecture_url") === "true";
-    console.log(existing);
-    const lecture_url = existing ? localStorage.getItem("lecture_url") : this.state.default_url;
+    const lecture_url = localStorage.getItem("lecture_url")
+      ? localStorage.getItem("lecture_url")
+      : this.state.default_url;
     this.setState({ lecture_url });
   }
 
@@ -40,7 +55,7 @@ class App extends Component {
     },
     handleStorage: () => {
       const { lecture_url } = this.state;
-      localStorage.setItem('lecture_url', lecture_url);
+      localStorage.setItem("lecture_url", lecture_url);
     }
   };
 }
