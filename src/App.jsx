@@ -5,14 +5,13 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import Appbar from "./components/AppBar.jsx";
 import RenderComponent from "./components/RenderBased.jsx";
 import Button from "@material-ui/core/Button";
-import { fetchData } from "./utils/FetchAnyData";
+import { fetchData, wtfFetch } from "./utils/FetchAnyData";
 
 class App extends Component {
   state = {
     tab: 0,
     lecture_url: String,
-    default_url:
-      "https://vorlesungsplan.dhbw-mannheim.de/index.php?action=list&gid=3067001",
+    default_url: "https://vorlesungsplan.dhbw-mannheim.de/",
     city: String,
     remember: false
   };
@@ -26,13 +25,7 @@ class App extends Component {
             <RenderComponent {...this.state} />
             <Button
               variant="contained"
-              onClick={() =>
-                console.log(
-                  fetchData(this.state.default_url, "text", {
-                    mode: "no-cors"
-                  })
-                )
-              }
+              onClick={() => console.log(wtfFetch(this.state.default_url))}
             >
               Test Fetching
             </Button>
