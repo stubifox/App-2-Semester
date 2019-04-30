@@ -5,7 +5,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import Appbar from "./components/AppBar.jsx";
 import RenderComponent from "./components/RenderBased.jsx";
 import Button from "@material-ui/core/Button";
-import { fetchData, wtfFetch } from "./utils/FetchAnyData";
+// import { fetchData  from "./utils/FetchAnyData";
 
 class App extends Component {
   state = {
@@ -23,10 +23,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <RenderComponent {...this.state} />
-            <Button
-              variant="contained"
-              onClick={() => console.log(wtfFetch(this.state.default_url))}
-            >
+            <Button variant="contained" onClick={() => console.log("")}>
               Test Fetching
             </Button>
           </header>

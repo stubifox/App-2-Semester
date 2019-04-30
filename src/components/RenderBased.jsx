@@ -11,7 +11,7 @@ const RenderComponent = props => {
     case 1:
       return <div />;
     case 2:
-      return <div />;
+      return <div>https://material-ui.com/demos/tables/</div>;
     default:
       return undefined;
   }
