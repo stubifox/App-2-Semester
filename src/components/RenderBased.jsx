@@ -1,6 +1,7 @@
 import React from "react";
 import Iframe from "./Iframe.jsx";
 import CourseSelect from "./CourseSelect.jsx";
+import Opening from "./Opening";
 
 const RenderComponent = props => {
   const { tab, remember } = props;
@@ -11,7 +12,7 @@ const RenderComponent = props => {
     case 1:
       return <div />;
     case 2:
-      return <div>https://material-ui.com/demos/tables/</div>;
+      return <Opening/>
     default:
       return undefined;
   }

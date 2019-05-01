@@ -23,9 +23,9 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <RenderComponent {...this.state} />
-            <Button variant="contained" onClick={() => console.log("")}>
+            {/* <Button variant="contained" onClick={() => console.log("")}>
               Test Fetching
-            </Button>
+            </Button> */}
           </header>
         </div>
       </MuiThemeProvider>
