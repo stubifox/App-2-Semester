@@ -43,40 +43,37 @@ class DataTable extends Component {
     return (
       <Paper className={classes.root}>
         <Table className={classes.table}>
-          <TableHead>
+          <TableHead style={{ position: "" }}>
             <TableRow>
               <CustomTableCell>MARKET</CustomTableCell>
+              <CustomTableCell>INFO</CustomTableCell>
               <CustomTableCell align="center">OPENINGS</CustomTableCell>
               <CustomTableCell align="center">MORE</CustomTableCell>
-              <CustomTableCell align="center">OFFERS</CustomTableCell>
-              <CustomTableCell align="center">LOCATION</CustomTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.props.data.map(row => (
-              <TableRow className={classes.row} key={row.id}>
+            {this.props.data.map(data => (
+              <TableRow className={classes.row} key={data.id}>
                 <CustomTableCell
                   component="th"
                   scope="row"
                   style={{ width: "25vw" }}
                 >
-                  <b>{row.market}</b>
+                  <b>{data.market}</b>
                 </CustomTableCell>
-                <CustomTableCell align="center" style={{ width: "30vw" }}>
-                  {row.opening}
-                </CustomTableCell>
-                <CustomTableCell align="center" style={{ width: "25vw" }}>
-                  {row.information}
-                </CustomTableCell>
-                <CustomTableCell align="center" style={{ width: "10vw" }}>
-                  <Link href={row.offer} target="_blank" color="primary">
+                <CustomTableCell align="center" style={{ width: "5vw" }}>
+                  <Link href={data.location} target="_blank" color="secondary">
+                    <LocationOnOutlined />
+                  </Link>
+                  <Link href={data.offer} target="_blank" color="primary">
                     <InfoOutlined />
                   </Link>
                 </CustomTableCell>
-                <CustomTableCell align="center" style={{ width: "10vw" }}>
-                  <Link href={row.location} target="_blank" color="secondary">
-                    <LocationOnOutlined />
-                  </Link>
+                <CustomTableCell align="center" style={{ width: "30vw" }}>
+                  {data.opening}
+                </CustomTableCell>
+                <CustomTableCell align="center" style={{ width: "25vw" }}>
+                  {data.information}
                 </CustomTableCell>
               </TableRow>
             ))}

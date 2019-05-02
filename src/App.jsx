@@ -4,7 +4,9 @@ import theme from "./utils/theme.jsx";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import Appbar from "./components/AppBar.jsx";
 import RenderComponent from "./components/RenderBased.jsx";
-import Button from "@material-ui/core/Button";
+// import sunny from "./images/weather-sunny.svg";
+// import Button from "@material-ui/core/Button";
+
 // import { fetchData  from "./utils/FetchAnyData";
 
 class App extends Component {
@@ -13,7 +15,10 @@ class App extends Component {
     lecture_url: String,
     default_url: "https://vorlesungsplan.dhbw-mannheim.de/",
     city: String,
-    remember: false
+    remember: false,
+    temp: Number,
+    weatherSrc: String,
+    weatherCity: "Mannheim"
   };
 
   render() {
@@ -24,7 +29,7 @@ class App extends Component {
             <Appbar {...this.changingFunctions} {...this.state} />
           </header>
           <body className="App-content">
-            <RenderComponent {...this.state} />
+            <RenderComponent {...this.state} {...this.changingFunctions} />
             {/* <Button variant="contained" onClick={() => console.log("")}>
               Test Fetching
             </Button> */}
@@ -48,8 +53,13 @@ class App extends Component {
     handleStorage: () => {
       const { lecture_url } = this.state;
       localStorage.setItem("lecture_url", lecture_url);
+    },
+    changeWeatherState: weatherSrc => {
+      this.setState({ weatherSrc });
+    },
+    changeTemperature: temp => {
+      this.setState({ temp });
     }
   };
 }
-
 export default App;
