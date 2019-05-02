@@ -1,18 +1,32 @@
 .App {
   text-align: center;
-  
+
 }
 
-.App-header {
+.App-content {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: static;
 }
+
+.App-header {
+  background-color: #282c34;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+}
+
 .card {
   height: 30ch;
   width: 75ch;
@@ -29,5 +43,3 @@
 .card:hover {
   box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.6);
 }
-
-

@@ -19,14 +19,16 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <Appbar {...this.changingFunctions} {...this.state} />
         <div className="App">
           <header className="App-header">
+            <Appbar {...this.changingFunctions} {...this.state} />
+          </header>
+          <body className="App-content">
             <RenderComponent {...this.state} />
             {/* <Button variant="contained" onClick={() => console.log("")}>
               Test Fetching
             </Button> */}
-          </header>
+          </body>
         </div>
       </MuiThemeProvider>
     );
