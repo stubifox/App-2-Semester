@@ -18,7 +18,9 @@ class App extends Component {
     remember: false,
     temp: Number,
     weatherSrc: String,
-    weatherCity: "Mannheim"
+    weatherCity: "Mannheim",
+    latitude: Number,
+    longitude: Number
   };
 
   render() {
@@ -59,6 +61,9 @@ class App extends Component {
     },
     changeTemperature: temp => {
       this.setState({ temp });
+    },
+    setWeatherLocation: (latitude, longitude) => {
+      this.setState({ latitude, longitude });
     }
   };
 }

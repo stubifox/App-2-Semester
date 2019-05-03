@@ -11,7 +11,18 @@ const RenderComponent = props => {
     case 0:
       return remember ? <Iframe {...props} /> : <CourseSelect {...props} />;
     case 1:
-      return <Weather {...props} />;
+      return (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row"
+          }}
+        >
+          <Weather {...props} />
+          {""}
+          <Weather {...props} />
+        </div>
+      );
     case 2:
       return <Opening data={marketData} />;
     default:

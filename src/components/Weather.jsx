@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import celsiusImg from "../images/temperature-celsius.svg";
-import weatherLogic from "../utils/WeatherLogic.jsx";
+import weatherLogic from "../utils/WeatherLogic.js";
 
 const Temperature = props => {
   return (
@@ -12,10 +12,9 @@ const Temperature = props => {
     </div>
   );
 };
-
 export default class Weather extends Component {
   render() {
-    const { weatherSrc, temp } = this.props;
+    const { weatherSrc, temp, setWeatherLocation } = this.props;
     return (
       <div>
         <div>
