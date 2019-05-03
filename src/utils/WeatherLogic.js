@@ -8,8 +8,9 @@ import lightning from "../images/weather-lightning.svg";
 import foggy from "../images/weather-fog.svg";
 import fetchData from "./FetchAnyData";
 
-const WeatherLogic = (...props) => {
+const WeatherLogic = props => {
   console.log(props);
+
   const {
     changeWeatherState,
     changeTemperature,
@@ -19,7 +20,9 @@ const WeatherLogic = (...props) => {
     setWeatherLocation,
     displayLocation,
     displayCity
-  } = [{ ...props }];
+  } = props;
+
+  console.log(weatherCity);
   (() => {
     return new Promise((resolve, reject) => {
       if (!navigator.geolocation) {

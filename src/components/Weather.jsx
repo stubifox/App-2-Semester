@@ -32,11 +32,11 @@ export default class Weather extends Component {
     );
   }
   componentDidMount() {
-    weatherLogic(
-      { ...this.changingFunctions },
-      { ...this.state },
-      { ...this.props }
-    );
+    weatherLogic({
+      ...{ ...this.changingFunctions },
+      ...{ ...this.state },
+      ...{ ...this.props }
+    });
   }
   changingFunctions = {
     changeWeatherState: weatherSrc => {
