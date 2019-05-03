@@ -23,29 +23,34 @@ const WeatherLogic = props => {
   } = props;
 
   console.log(weatherCity);
-  (() => {
-    return new Promise((resolve, reject) => {
-      if (!navigator.geolocation) {
-        reject("Geolocation is not supported");
-      } else {
-        console.log("Getting current location...");
+  // if (displayLocation) {
+  //   const getLocation = () => {
+  //     return new Promise((resolve, reject) => {
+  //       if (!navigator.geolocation) {
+  //         reject("Geolocation is not supported");
+  //       } else {
+  //         console.log("Getting current location...");
 
-        navigator.geolocation.watchPosition(
-          position => {
-            resolve({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude
-            });
-          },
-          err => {
-            reject(`Can't get current location: ${err.message}`);
-          }
-        );
-      }
-    });
-  })()
-    .then(location => setWeatherLocation(location.latitude, location.longitude))
-    .catch(err => console.log(err));
+  //         navigator.geolocation.watchPosition(
+  //           position => {
+  //             resolve({
+  //               latitude: position.coords.latitude,
+  //               longitude: position.coords.longitude
+  //             });
+  //           },
+  //           err => {
+  //             reject(`Can't get current location: ${err.message}`);
+  //           }
+  //         );
+  //       }
+  //     });
+  //   };
+  //   getLocation()
+  //     .then(location =>
+  //       setWeatherLocation(location.latitude, location.longitude)
+  //     )
+  //     .catch(err => console.log(err));
+  // }
 
   const setWeatherConditionSrcByIconId = iconId => {
     switch (iconId) {

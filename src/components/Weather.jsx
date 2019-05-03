@@ -21,7 +21,15 @@ export default class Weather extends Component {
     longitude: Number
   };
   render() {
-    const { weatherSrc, temp } = this.state;
+    const { weatherSrc, temp, displayLocation } = this.state;
+
+    if (displayLocation) {
+      this.getLocation()
+        .then(loc =>
+          this.changingFunctions.setWeatherLocation(loc.latitude, loc.longitude)
+        )
+        .catch(err => console.log(err));
+    }
     return (
       <div>
         <div>
@@ -38,6 +46,7 @@ export default class Weather extends Component {
       ...{ ...this.props }
     });
   }
+
   changingFunctions = {
     changeWeatherState: weatherSrc => {
       this.setState({ weatherSrc });
@@ -48,5 +57,26 @@ export default class Weather extends Component {
     setWeatherLocation: (latitude, longitude) => {
       this.setState({ latitude, longitude });
     }
+  };
+  getLocation = () => {
+    return new Promise((resolve, reject) => {
+      if (!navigator.geolocation) {
+        reject("Geolocation is not supported");
+      } else {
+        console.log("Getting current location...");
+
+        navigator.geolocation.watchPosition(
+          position => {
+            resolve({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            });
+          },
+          err => {
+            reject(`Can't get current location: ${err.message}`);
+          }
+        );
+      }
+    });
   };
 }
