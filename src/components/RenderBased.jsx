@@ -18,9 +18,9 @@ const RenderComponent = props => {
             flexDirection: "row"
           }}
         >
-          <Weather {...props} />
-          {""}
-          <Weather {...props} />
+          <Weather {...props} displayLocation />
+
+          <Weather {...props} displayCity />
         </div>
       );
     case 2:

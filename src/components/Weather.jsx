@@ -13,8 +13,15 @@ const Temperature = props => {
   );
 };
 export default class Weather extends Component {
+  state = {
+    temp: Number,
+    weatherSrc: String,
+    weatherCity: "Landau%20in%20der%20Pfalz",
+    latitude: Number,
+    longitude: Number
+  };
   render() {
-    const { weatherSrc, temp, setWeatherLocation } = this.props;
+    const { weatherSrc, temp } = this.state;
     return (
       <div>
         <div>
@@ -25,6 +32,21 @@ export default class Weather extends Component {
     );
   }
   componentDidMount() {
-    weatherLogic({ ...this.props });
+    weatherLogic(
+      { ...this.changingFunctions },
+      { ...this.state },
+      { ...this.props }
+    );
   }
+  changingFunctions = {
+    changeWeatherState: weatherSrc => {
+      this.setState({ weatherSrc });
+    },
+    changeTemperature: temp => {
+      this.setState({ temp });
+    },
+    setWeatherLocation: (latitude, longitude) => {
+      this.setState({ latitude, longitude });
+    }
+  };
 }

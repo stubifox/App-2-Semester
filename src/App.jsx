@@ -14,13 +14,7 @@ class App extends Component {
     tab: 0,
     lecture_url: String,
     default_url: "https://vorlesungsplan.dhbw-mannheim.de/",
-    city: String,
-    remember: false,
-    temp: Number,
-    weatherSrc: String,
-    weatherCity: "Mannheim",
-    latitude: Number,
-    longitude: Number
+    remember: false
   };
 
   render() {
@@ -55,15 +49,6 @@ class App extends Component {
     handleStorage: () => {
       const { lecture_url } = this.state;
       localStorage.setItem("lecture_url", lecture_url);
-    },
-    changeWeatherState: weatherSrc => {
-      this.setState({ weatherSrc });
-    },
-    changeTemperature: temp => {
-      this.setState({ temp });
-    },
-    setWeatherLocation: (latitude, longitude) => {
-      this.setState({ latitude, longitude });
     }
   };
 }
