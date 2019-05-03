@@ -20,7 +20,7 @@ const RenderComponent = props => {
         >
           <Weather {...props} displayLocation />
 
-          <Weather {...props} displayCity />
+          {/* <Weather {...props} displayCity /> */}
         </div>
       );
     case 2:

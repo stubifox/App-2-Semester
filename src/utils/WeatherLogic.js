@@ -15,42 +15,42 @@ const WeatherLogic = props => {
     changeWeatherState,
     changeTemperature,
     weatherCity,
-    latitude,
-    longitude,
     setWeatherLocation,
     displayLocation,
     displayCity
   } = props;
+  let url = String;
 
-  console.log(weatherCity);
-  // if (displayLocation) {
-  //   const getLocation = () => {
-  //     return new Promise((resolve, reject) => {
-  //       if (!navigator.geolocation) {
-  //         reject("Geolocation is not supported");
-  //       } else {
-  //         console.log("Getting current location...");
+  if (displayLocation) {
+    (() => {
+      return new Promise((resolve, reject) => {
+        if (!navigator.geolocation) {
+          reject("Geolocation is not supported");
+        } else {
+          console.log("Getting current location...");
 
-  //         navigator.geolocation.watchPosition(
-  //           position => {
-  //             resolve({
-  //               latitude: position.coords.latitude,
-  //               longitude: position.coords.longitude
-  //             });
-  //           },
-  //           err => {
-  //             reject(`Can't get current location: ${err.message}`);
-  //           }
-  //         );
-  //       }
-  //     });
-  //   };
-  //   getLocation()
-  //     .then(location =>
-  //       setWeatherLocation(location.latitude, location.longitude)
-  //     )
-  //     .catch(err => console.log(err));
-  // }
+          navigator.geolocation.watchPosition(
+            position => {
+              resolve({
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+              });
+            },
+            err => {
+              reject(`Can't get current location: ${err.message}`);
+            }
+          );
+        }
+      });
+    })()
+      .then(
+        loc =>
+          (url = `api.openweathermap.org/data/2.5/weather?lat=${
+            loc.latitude
+          }&lon=${loc.longitude}`)
+      )
+      .catch(err => console.log(err));
+  }
 
   const setWeatherConditionSrcByIconId = iconId => {
     switch (iconId) {
@@ -102,11 +102,6 @@ const WeatherLogic = props => {
     }
   };
 
-  let url = String;
-  if (displayLocation) {
-    url = `api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}`;
-    console.log("locationurl");
-  }
   if (displayCity) {
     url = `http://api.openweathermap.org/data/2.5/forecast?q=${weatherCity}&units=metric&appid=79047fef23db38e4c89c429996909801`;
   }
