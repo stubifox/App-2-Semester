@@ -4,6 +4,8 @@ import CourseSelect from "./CourseSelect.jsx";
 import Opening from "./Opening";
 import { marketData } from "../data/markets.js";
 import Weather from "./Weather.jsx";
+import { Spring, config } from "react-spring/renderprops";
+
 const RenderComponent = props => {
   const { tab, remember } = props;
 
@@ -18,13 +20,13 @@ const RenderComponent = props => {
             flexDirection: "row"
           }}
         >
-          <Weather {...props} displayLocation />
+          {/* <Weather {...props} displayLocation /> */}
 
-          {/* <Weather {...props} displayCity /> */}
+          <Weather {...props} displayCity />
         </div>
       );
     case 2:
-      return <Opening data={marketData} />;
+      return <Opening data={marketData} style={props} />;
     default:
       throw Error("ups... something went wrong here");
   }

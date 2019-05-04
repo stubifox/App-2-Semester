@@ -3,11 +3,10 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
 export default class ChangeAnimation extends React.Component {
-
   render() {
-      const {tab, changeTab} = this.props;
+    const { tab, changeTab } = this.props;
     return (
-      <div className="App" >
+      <div className="App">
         <Tabs
           indicatorColor="secondary"
           textColor="inherit"
@@ -21,9 +20,5 @@ export default class ChangeAnimation extends React.Component {
         </Tabs>
       </div>
     );
-
-    
   }
-  
- 
 }

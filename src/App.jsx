@@ -10,7 +10,9 @@ class App extends Component {
     tab: 0,
     lecture_url: String,
     default_url: "https://vorlesungsplan.dhbw-mannheim.de/",
-    remember: false
+    remember: false,
+    weatherCity: "Mannheim",
+    inputHandler: String
   };
 
   render() {
@@ -22,9 +24,6 @@ class App extends Component {
           </header>
           <body className="App-content">
             <RenderComponent {...this.state} {...this.changingFunctions} />
-            {/* <Button variant="contained" onClick={() => console.log("")}>
-              Test Fetching
-            </Button> */}
           </body>
         </div>
       </MuiThemeProvider>
@@ -45,6 +44,12 @@ class App extends Component {
     handleStorage: () => {
       const { lecture_url } = this.state;
       localStorage.setItem("lecture_url", lecture_url);
+    },
+    changeWeatherCity: () => {
+      this.setState({ weatherCity: this.state.inputHandler });
+    },
+    handleInputChange: value => {
+      this.setState({ inputHandler: value }, () => console.log(this));
     }
   };
 }
