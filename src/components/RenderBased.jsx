@@ -4,7 +4,6 @@ import CourseSelect from "./CourseSelect.jsx";
 import Opening from "./Opening";
 import { marketData } from "../data/markets.js";
 import Weather from "./Weather.jsx";
-import { Spring, config } from "react-spring/renderprops";
 
 const RenderComponent = props => {
   const { tab, remember } = props;
@@ -20,8 +19,8 @@ const RenderComponent = props => {
             flexDirection: "row"
           }}
         >
-          {/* <Weather {...props} displayLocation /> */}
-
+          <Weather {...props} displayLocation />
+          <div />
           <Weather {...props} displayCity />
         </div>
       );

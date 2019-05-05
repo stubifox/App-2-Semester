@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import celsiusImg from "../images/temperature-celsius.svg";
 import weatherLogic from "../utils/WeatherLogic.js";
-import theme from "../utils/theme.jsx";
 
 const Temperature = props => {
+  const { displayCity, displayLocation } = props;
   return (
     <div style={{ verticalAlign: "middle" }}>
       <div style={{ margin: "auto" }}>
-        <h1>{props.weatherCity}</h1>
+        {displayCity && <h1>{props.weatherCity}</h1>}
+        {displayLocation && <h1>{props.coordinateCity}</h1>}
         <h1 style={{ color: "black" }}>
           {props.celsius}
           <img width="50ch" alt="celsius" src={celsiusImg} />
@@ -18,10 +19,9 @@ const Temperature = props => {
 };
 export default class Weather extends Component {
   state = {
-    temp: 0,
+    temp: Number,
     weatherSrc: String,
-    latitude: 0,
-    longitude: 0
+    coordinateCity: String
   };
   render() {
     const { weatherSrc, temp } = this.state;
@@ -29,13 +29,17 @@ export default class Weather extends Component {
       <div>
         <div>
           <img width="50ch" alt="weather" src={weatherSrc} />
-          <Temperature celsius={Math.round(temp)} {...this.props} />
+          <Temperature
+            celsius={Math.round(temp)}
+            {...this.props}
+            {...this.state}
+          />
         </div>
       </div>
     );
   }
-  componentDidMount() {
-    weatherLogic({
+  async componentDidMount() {
+    await weatherLogic({
       ...{ ...this.changingFunctions },
       ...{ ...this.state },
       ...{ ...this.props }
@@ -57,8 +61,8 @@ export default class Weather extends Component {
     changeTemperature: temp => {
       this.setState({ temp });
     },
-    setWeatherLocation: (latitude, longitude) => {
-      this.setState({ latitude, longitude });
+    setCoordinateCity: coordinateCity => {
+      this.setState({ coordinateCity });
     }
   };
 }

@@ -8,48 +8,55 @@ import lightning from "../images/weather-lightning.svg";
 import foggy from "../images/weather-fog.svg";
 import fetchData from "./FetchAnyData";
 
-const WeatherLogic = props => {
+const weatherLogic = async props => {
   console.log(props);
+
+  const API_KEY = "a9f5769786f635c0fd56e2e3564faefc";
 
   const {
     changeWeatherState,
     changeTemperature,
     weatherCity,
-    setWeatherLocation,
     displayLocation,
-    displayCity
+    displayCity,
+    setCoordinateCity
   } = props;
-  let url = String;
+
+  if (displayCity) {
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${weatherCity}&units=metric&APPID=${API_KEY}`;
+    fetchData(url, false)
+      .then(data => {
+        console.log(data);
+        changeTemperature(data.main.temp_max);
+        setWeatherConditionSrcByIconId(data.weather[0].icon);
+      })
+      .catch(err => Error(err));
+  }
 
   if (displayLocation) {
-    (() => {
-      return new Promise((resolve, reject) => {
-        if (!navigator.geolocation) {
-          reject("Geolocation is not supported");
-        } else {
-          console.log("Getting current location...");
-
-          navigator.geolocation.watchPosition(
-            position => {
-              resolve({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
-              });
-            },
-            err => {
-              reject(`Can't get current location: ${err.message}`);
-            }
-          );
+    if (!navigator.geolocation) {
+      throw Error("Geolocation is not supported");
+    } else {
+      console.log("Getting current location...");
+      navigator.geolocation.watchPosition(
+        position => {
+          const url = `http://api.openweathermap.org/data/2.5/weather?lat=${
+            position.coords.latitude
+          }&lon=${position.coords.longitude}&units=metric&APPID=${API_KEY}`;
+          fetchData(url, false)
+            .then(data => {
+              console.log(data);
+              setCoordinateCity(data.name);
+              changeTemperature(data.main.temp_max);
+              setWeatherConditionSrcByIconId(data.weather[0].icon);
+            })
+            .catch(err => Error(err));
+        },
+        err => {
+          throw Error(`Can't get current location: ${err.message}`);
         }
-      });
-    })()
-      .then(
-        loc =>
-          (url = `api.openweathermap.org/data/2.5/weather?lat=${
-            loc.latitude
-          }&lon=${loc.longitude}`)
-      )
-      .catch(err => console.log(err));
+      );
+    }
   }
 
   const setWeatherConditionSrcByIconId = iconId => {
@@ -101,18 +108,6 @@ const WeatherLogic = props => {
         break;
     }
   };
-
-  if (displayCity) {
-    url = `http://api.openweathermap.org/data/2.5/forecast?q=${weatherCity}&units=metric&appid=79047fef23db38e4c89c429996909801`;
-  }
-  fetchData(url, false)
-    .then(console.log(url))
-    .then(data => {
-      console.log(data);
-      changeTemperature(data.list[0].main.temp_max);
-      setWeatherConditionSrcByIconId(data.list[0].weather[0].icon);
-    })
-    .catch(err => Error(err));
 };
 
-export default WeatherLogic;
+export default weatherLogic;
