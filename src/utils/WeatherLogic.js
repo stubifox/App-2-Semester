@@ -9,8 +9,6 @@ import foggy from "../images/weather-fog.svg";
 import fetchData from "./FetchAnyData";
 
 const weatherLogic = async props => {
-  console.log(props);
-
   const API_KEY = "a9f5769786f635c0fd56e2e3564faefc";
 
   const {
@@ -26,7 +24,6 @@ const weatherLogic = async props => {
     const url = `http://api.openweathermap.org/data/2.5/weather?q=${weatherCity}&units=metric&APPID=${API_KEY}`;
     fetchData(url, false)
       .then(data => {
-        console.log(data);
         changeTemperature(data.main.temp_max);
         setWeatherConditionSrcByIconId(data.weather[0].icon);
       })

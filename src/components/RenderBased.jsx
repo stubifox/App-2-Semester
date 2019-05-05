@@ -6,7 +6,7 @@ import { marketData } from "../data/markets.js";
 import Weather from "./Weather.jsx";
 
 const RenderComponent = props => {
-  const { tab, remember } = props;
+  const { tab, remember, newCity } = props;
 
   switch (tab) {
     case 0:
@@ -20,8 +20,8 @@ const RenderComponent = props => {
           }}
         >
           <Weather {...props} displayLocation />
-          <div />
           <Weather {...props} displayCity />
+          {newCity && <Weather {...props} newCity />}
         </div>
       );
     case 2:

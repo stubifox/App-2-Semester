@@ -3,7 +3,7 @@ import celsiusImg from "../images/temperature-celsius.svg";
 import weatherLogic from "../utils/WeatherLogic.js";
 
 const Temperature = props => {
-  const { displayCity, displayLocation } = props;
+  const { displayCity, displayLocation, newCity } = props;
   return (
     <div style={{ verticalAlign: "middle" }}>
       <div style={{ margin: "auto" }}>
@@ -45,14 +45,13 @@ export default class Weather extends Component {
       ...{ ...this.props }
     });
   }
-  componentWillReceiveProps(nextProps) {
-    weatherLogic({
-      ...{ ...this.changingFunctions },
-      ...{ ...this.state },
-      ...{ ...this.props },
-      ...{ ...nextProps }
-    });
-  }
+  // async componentDidUpdate() {
+  //   await weatherLogic({
+  //     ...{ ...this.changingFunctions },
+  //     ...{ ...this.state },
+  //     ...{ ...this.props }
+  //   });
+  // }
 
   changingFunctions = {
     changeWeatherState: weatherSrc => {
