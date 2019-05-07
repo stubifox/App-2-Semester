@@ -10,7 +10,7 @@ import fetchData from "./FetchAnyData";
 
 export const getLocation = setCoordinates => {
   if (!navigator.geolocation) {
-    throw Error("Geolocation is not supported");
+    alert("Geolocation is not supported");
   } else {
     console.log("Getting current location...");
     navigator.geolocation.watchPosition(
@@ -18,7 +18,7 @@ export const getLocation = setCoordinates => {
         setCoordinates(position.coords.latitude, position.coords.longitude);
       },
       err => {
-        throw Error(`Can't get current location: ${err.message}`);
+        console.error(`Can't get current location: ${err.message}`);
       }
     );
   }
