@@ -46,8 +46,8 @@ class SimpleAppBar extends Component {
                   type="search"
                   margin="normal"
                   variant="outlined"
-                  onChange={() => {
-                    handleInputChange();
+                  onChange={event => {
+                    handleInputChange(event.target.value);
                   }}
                   InputProps={{
                     startAdornment: (

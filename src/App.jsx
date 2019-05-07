@@ -46,18 +46,12 @@ class App extends Component {
       localStorage.setItem("lecture_url", lecture_url);
     },
     changeWeatherCity: () => {
-      this.setState(
-        {
-          weatherCity: encodeURI(this.state.inputHandler)
-        },
-        () => console.log(this.state.weatherCity)
-      );
+      this.setState({
+        weatherCity: encodeURI(this.state.inputHandler)
+      });
     },
-    handleInputChange: event => {
-      this.setState(
-        { inputHandler: event.target.value },
-        console.log(this.state.inputHandler)
-      );
+    handleInputChange: inputHandler => {
+      this.setState({ inputHandler }, console.log(this.state.inputHandler));
     }
   };
 }

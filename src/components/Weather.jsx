@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import celsiusImg from "../images/temperature-celsius.svg";
-import weatherLogic from "../utils/WeatherLogic.js";
+import handleData, { getLocation } from "../utils/WeatherLogic.js";
 
 const Temperature = props => {
-  const { displayCity, displayLocation, newCity } = props;
+  const { displayCity, displayLocation } = props;
   return (
     <div style={{ verticalAlign: "middle" }}>
       <div style={{ margin: "auto" }}>
-        {displayCity && <h1>{props.weatherCity}</h1>}
+        {displayCity && <h1>{props.dataCity}</h1>}
         {displayLocation && <h1>{props.coordinateCity}</h1>}
         <h1 style={{ color: "black" }}>
           {props.celsius}
@@ -21,10 +21,15 @@ export default class Weather extends Component {
   state = {
     temp: Number,
     weatherSrc: String,
-    coordinateCity: String
+    coordinateCity: String,
+    latitude: undefined,
+    longitude: undefined,
+    dataCity: String
   };
+
   render() {
     const { weatherSrc, temp } = this.state;
+
     return (
       <div>
         <div>
@@ -38,20 +43,32 @@ export default class Weather extends Component {
       </div>
     );
   }
-  async componentDidMount() {
-    await weatherLogic({
-      ...{ ...this.changingFunctions },
-      ...{ ...this.state },
-      ...{ ...this.props }
-    });
+
+  componentDidMount() {
+    if (this.props.displayLocation) {
+      getLocation(this.changingFunctions.setCoordinates);
+    }
+    if (this.props.displayCity) {
+      this.getWeatherData(this.state, this.props);
+    }
   }
-  // async componentDidUpdate() {
-  //   await weatherLogic({
-  //     ...{ ...this.changingFunctions },
-  //     ...{ ...this.state },
-  //     ...{ ...this.props }
-  //   });
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.weatherCity !== this.props.weatherCity) {
+      this.getWeatherData(this.state, this.props);
+    }
+    if (prevState.latitude !== this.state.latitude) {
+      this.getWeatherData(this.state, this.props);
+    }
+  }
+
+  getWeatherData = (states, props) => {
+    const params = {
+      ...{ ...this.changingFunctions },
+      ...{ ...states },
+      ...{ ...props }
+    };
+    handleData(params);
+  };
 
   changingFunctions = {
     changeWeatherState: weatherSrc => {
@@ -62,6 +79,12 @@ export default class Weather extends Component {
     },
     setCoordinateCity: coordinateCity => {
       this.setState({ coordinateCity });
+    },
+    setCoordinates: (latitude, longitude) => {
+      this.setState({ latitude, longitude });
+    },
+    setDataCity: dataCity => {
+      this.setState({ dataCity });
     }
   };
 }
