@@ -18,7 +18,7 @@ export default class AnimatedInput extends Component {
           <TextField
             style={props}
             id="outlined-search"
-            label="Search City"
+            label={this.props.label}
             type="search"
             margin="normal"
             variant="outlined"
@@ -26,7 +26,7 @@ export default class AnimatedInput extends Component {
               this.props.onChange(event.target.value);
             }}
             InputProps={{
-              startAdornment: (
+              startAdornment: this.props.left && (
                 <InputAdornment position="start">
                   {this.props.children}
                 </InputAdornment>
@@ -57,5 +57,6 @@ AnimatedInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   children: PropTypes.element.isRequired,
-  SubmitText: PropTypes.string.isRequired
+  SubmitText: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 };

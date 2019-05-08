@@ -50,6 +50,8 @@ const CourseAsker = () => {
       onChange={handleInput}
       onSubmit={changingFunctions.validateCourseUrl}
       submitText="Show me!"
+      label="Paste your Url here"
+      left={false}
     >
       <LoyaltyOutlined />
     </AnimatedInput>

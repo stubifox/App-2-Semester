@@ -33,6 +33,8 @@ class SimpleAppBar extends Component {
               onChange={handleInputChange}
               onSubmit={changeWeatherCity}
               submitText="Update"
+              label="Search City"
+              left={true}
               {...this.props}
             >
               <SearchOutlined />
