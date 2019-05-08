@@ -8,9 +8,8 @@ import RenderComponent from "./components/RenderBased.jsx";
 class App extends Component {
   state = {
     tab: 0,
-    lecture_url: String,
     default_url: "https://vorlesungsplan.dhbw-mannheim.de/",
-    remember: false,
+    remember: true,
     weatherCity: "Mannheim",
     inputHandler: String
   };
@@ -31,19 +30,20 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const lecture_url = localStorage.getItem("lecture_url")
-      ? localStorage.getItem("lecture_url")
+    const default_url = localStorage.getItem("default_url")
+      ? localStorage.getItem("default_url")
       : this.state.default_url;
-    this.setState({ lecture_url });
+    this.setState({ default_url });
   }
 
   changingFunctions = {
     changeTab: (event, tab) => {
       this.setState({ tab });
     },
-    handleStorage: () => {
-      const { lecture_url } = this.state;
-      localStorage.setItem("lecture_url", lecture_url);
+    setUrlAndHandleStorage: default_url => {
+      this.setState({ default_url }, () => {
+        localStorage.setItem("default_url", default_url);
+      });
     },
     changeWeatherCity: () => {
       this.setState({

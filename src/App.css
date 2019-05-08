@@ -28,8 +28,8 @@
 }
 
 .card {
-  height: 30ch;
-  width: 75ch;
+  height: 100ch;
+  width: 100ch;
   background: grey;
   border-radius: 5px;
   background-size: cover;
