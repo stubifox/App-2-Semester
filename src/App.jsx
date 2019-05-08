@@ -31,11 +31,7 @@ class App extends Component {
     changeTab: (event, tab) => {
       this.setState({ tab });
     },
-    setUrlAndHandleStorage: default_url => {
-      this.setState({ default_url }, () => {
-        localStorage.setItem("default_url", default_url);
-      });
-    },
+
     changeWeatherCity: () => {
       this.setState({
         weatherCity: encodeURI(this.state.inputHandler)

@@ -1,6 +1,4 @@
 import React from "react";
-import Iframe from "./Iframe.jsx";
-import CourseSelect from "./CourseSelect.jsx";
 import Opening from "./Opening";
 import { marketData } from "../data/markets.js";
 import Weather from "./Weather.jsx";
