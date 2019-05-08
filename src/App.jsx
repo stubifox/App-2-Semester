@@ -8,8 +8,6 @@ import RenderComponent from "./components/RenderBased.jsx";
 class App extends Component {
   state = {
     tab: 0,
-    default_url: "https://vorlesungsplan.dhbw-mannheim.de/",
-    remember: true,
     weatherCity: "Mannheim",
     inputHandler: String
   };
@@ -29,13 +27,6 @@ class App extends Component {
     );
   }
 
-  componentDidMount() {
-    const default_url = localStorage.getItem("default_url")
-      ? localStorage.getItem("default_url")
-      : this.state.default_url;
-    this.setState({ default_url });
-  }
-
   changingFunctions = {
     changeTab: (event, tab) => {
       this.setState({ tab });
@@ -51,7 +42,7 @@ class App extends Component {
       });
     },
     handleInputChange: inputHandler => {
-      this.setState({ inputHandler }, console.log(this.state.inputHandler));
+      this.setState({ inputHandler });
     }
   };
 }

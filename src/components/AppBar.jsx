@@ -6,11 +6,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import NavBar from "./Navbar.jsx";
 import Rocket from "../ressources/Rocket.png";
-import TextField from "@material-ui/core/TextField";
-import { Spring, config } from "react-spring/renderprops";
+import AnimatedInput from "./AnimatedInputField.jsx";
 import { SearchOutlined } from "@material-ui/icons";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Button from "@material-ui/core/Button";
 
 const styles = {
   root: {
@@ -32,48 +29,14 @@ class SimpleAppBar extends Component {
             <NavBar {...this.props} />
           </Toolbar>
           {tab === 1 && (
-            <Spring
-              from={{ opacity: 0, width: "0%" }}
-              to={{ opacity: 1, width: "100%" }}
-              config={config.molasses}
-              delay={100}
+            <AnimatedInput
+              onChange={handleInputChange}
+              onSubmit={changeWeatherCity}
+              submitText="Update"
+              {...this.props}
             >
-              {props => (
-                <TextField
-                  style={props}
-                  id="outlined-search"
-                  label="Search City"
-                  type="search"
-                  margin="normal"
-                  variant="outlined"
-                  onChange={event => {
-                    handleInputChange(event.target.value);
-                  }}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <SearchOutlined />
-                      </InputAdornment>
-                    ),
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          type="submit"
-                          onClick={() => {
-                            changeWeatherCity();
-                          }}
-                        >
-                          Update
-                          <SearchOutlined />
-                        </Button>
-                      </InputAdornment>
-                    )
-                  }}
-                />
-              )}
-            </Spring>
+              <SearchOutlined />
+            </AnimatedInput>
           )}
         </AppBar>
       </div>

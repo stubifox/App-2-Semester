@@ -4,13 +4,14 @@ import CourseSelect from "./CourseSelect.jsx";
 import Opening from "./Opening";
 import { marketData } from "../data/markets.js";
 import Weather from "./Weather.jsx";
+import CourseAsker from "./IsThisYourCourse.jsx";
 
 const RenderComponent = props => {
-  const { tab, remember } = props;
+  const { tab } = props;
 
   switch (tab) {
     case 0:
-      return remember ? <Iframe {...props} /> : <CourseSelect {...props} />;
+      return <CourseAsker {...props} />;
     case 1:
       return (
         <div
