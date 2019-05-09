@@ -4,7 +4,8 @@ import AnimatedInput from "./AnimatedInputField.jsx";
 import Iframe from "./Iframe.jsx";
 import { LoyaltyOutlined } from "@material-ui/icons";
 
-const CourseAsker = () => {
+const CourseAsker = props => {
+  const { displayLoadingBar } = props;
   const default_url = "https://vorlesungsplan.dhbw-mannheim.de/";
   const [courseUrl, setCourseUrl] = useState(default_url);
   const [clicked, setClicked] = useState(false);
@@ -25,14 +26,16 @@ const CourseAsker = () => {
   const changingFunctions = {
     validateCourseUrl: () => {
       setCourseUrl(inputHandler);
+      displayLoadingBar(500);
       setSelected(true);
     },
     handleStorage: () => {
       localStorage.setItem("courseUrl", courseUrl);
     }
   };
+
   if (selected) {
-    return <Iframe src={courseUrl} />;
+    return <Iframe src={courseUrl} displayLoadingBar={displayLoadingBar} />;
   }
   return !clicked ? (
     <Button
@@ -40,7 +43,11 @@ const CourseAsker = () => {
       color="primary"
       type="submit"
       onClick={() => {
-        openTabAfterTimeout(courseUrl, setClicked(true));
+        openTabAfterTimeout(
+          courseUrl,
+          setClicked(true),
+          displayLoadingBar(500)
+        );
       }}
     >
       Click and Select your Course
@@ -52,13 +59,15 @@ const CourseAsker = () => {
       submitText="Show me!"
       label="Paste your Url here"
       left={false}
+      displayLoadingBar={displayLoadingBar}
     >
       <LoyaltyOutlined />
     </AnimatedInput>
   );
 };
-const openTabAfterTimeout = (url, func) => {
-  if (typeof func === "function") {
+const openTabAfterTimeout = (url, func, displayLoadingBar) => {
+  if (typeof func && displayLoadingBar === "function") {
+    displayLoadingBar();
     func();
   }
   setTimeout(() => {
@@ -68,7 +77,7 @@ const openTabAfterTimeout = (url, func) => {
         "s",
         `width=${window.innerWidth / 1.5}, height=${window.innerHeight /
           1.5}, left=${window.innerWidth / 5}, top=${window.innerHeight /
-          6}, resizable=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no`
+          6}, resizable=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no `
       )
       .blur();
     window.focus();

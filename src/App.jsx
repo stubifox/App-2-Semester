@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     tab: 0,
     weatherCity: "Mannheim",
-    inputHandler: String
+    inputHandler: String,
+    isLoading: false
   };
 
   render() {
@@ -39,6 +40,12 @@ class App extends Component {
     },
     handleInputChange: inputHandler => {
       this.setState({ inputHandler });
+    },
+    displayLoadingBar: timeout => {
+      setTimeout(() => {
+        this.setState({ isLoading: false });
+      }, timeout);
+      this.setState({ isLoading: true });
     }
   };
 }

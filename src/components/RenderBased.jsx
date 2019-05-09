@@ -23,7 +23,7 @@ const RenderComponent = props => {
         </div>
       );
     case 2:
-      return <Opening data={marketData} style={props} />;
+      return <Opening data={marketData} style={props} {...props} />;
     default:
       throw Error("ups... something went wrong here");
   }

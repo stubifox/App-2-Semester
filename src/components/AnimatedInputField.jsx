@@ -38,6 +38,7 @@ export default class AnimatedInput extends Component {
                     color="primary"
                     type="submit"
                     onClick={() => {
+                      this.props.displayLoadingBar(500);
                       this.props.onSubmit();
                     }}
                   >
@@ -57,6 +58,6 @@ AnimatedInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   children: PropTypes.element.isRequired,
-  SubmitText: PropTypes.string.isRequired,
+  submitText: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired
 };

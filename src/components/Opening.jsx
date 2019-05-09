@@ -82,6 +82,9 @@ class DataTable extends Component {
       </Paper>
     );
   }
+  componentWillMount() {
+    this.props.displayLoadingBar(500);
+  }
 }
 
 DataTable.propTypes = {

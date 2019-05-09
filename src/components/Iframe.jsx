@@ -19,4 +19,7 @@ export default class Iframe extends Component {
       </div>
     );
   }
+  componentWillMount() {
+    this.props.displayLoadingBar(500);
+  }
 }

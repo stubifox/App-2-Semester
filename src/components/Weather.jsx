@@ -43,6 +43,9 @@ export default class Weather extends Component {
       </div>
     );
   }
+  componentWillMount() {
+    this.props.displayLoadingBar(500);
+  }
 
   componentDidMount() {
     if (this.props.displayLocation) {

@@ -8,6 +8,7 @@ import NavBar from "./Navbar.jsx";
 import Rocket from "../ressources/Rocket.png";
 import AnimatedInput from "./AnimatedInputField.jsx";
 import { SearchOutlined } from "@material-ui/icons";
+import LinearProgress from "./LoadingProgress.jsx";
 
 const styles = {
   root: {
@@ -17,7 +18,7 @@ const styles = {
 
 class SimpleAppBar extends Component {
   render() {
-    const { tab, handleInputChange, changeWeatherCity } = this.props;
+    const { tab, handleInputChange, changeWeatherCity, isLoading } = this.props;
 
     return (
       <div style={{ position: "fixed", width: "100%" }}>
@@ -28,6 +29,7 @@ class SimpleAppBar extends Component {
             </Typography>
             <NavBar {...this.props} />
           </Toolbar>
+          {isLoading && <LinearProgress />}
           {tab === 1 && (
             <AnimatedInput
               onChange={handleInputChange}
