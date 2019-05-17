@@ -14,9 +14,9 @@ export default class ChangeAnimation extends React.Component {
           onChange={changeTab}
           centered
         >
-          <Tab label="Studenplan" />
-          <Tab label="Wetter" />
-          <Tab label="Öffnungszeiten" />
+          <Tab label="Courses" />
+          <Tab label="Weather" />
+          <Tab label="Places Of Interest" />
         </Tabs>
       </div>
     );

@@ -35,7 +35,29 @@ const CourseAsker = props => {
   };
 
   if (selected) {
-    return <Iframe src={courseUrl} displayLoadingBar={displayLoadingBar} />;
+    return (
+      <div>
+        <div>
+          <Iframe src={courseUrl} displayLoadingBar={displayLoadingBar} />
+        </div>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            setClicked(false);
+            setSelected(false, () => {
+              console.log(selected);
+            });
+            localStorage.clear();
+            console.log("====================================");
+            console.log(`clicked: ${clicked} and selected is ${selected}`);
+            console.log("====================================");
+          }}
+        >
+          change Course
+        </Button>
+      </div>
+    );
   }
   return !clicked ? (
     <Button
@@ -65,10 +87,10 @@ const CourseAsker = props => {
     </AnimatedInput>
   );
 };
-const openTabAfterTimeout = (url, func, displayLoadingBar) => {
-  if (typeof func && displayLoadingBar === "function") {
+const openTabAfterTimeout = (url, stateSetter, displayLoadingBar) => {
+  if (typeof stateSetter && displayLoadingBar === "function") {
     displayLoadingBar();
-    func();
+    stateSetter();
   }
   setTimeout(() => {
     window

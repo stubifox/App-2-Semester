@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import celsiusImg from "../images/temperature-celsius.svg";
 import handleData, { getLocation } from "../utils/WeatherLogic.js";
+import "../App.css";
 
 const Temperature = props => {
   const { displayCity, displayLocation } = props;

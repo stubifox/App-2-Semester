@@ -4,6 +4,7 @@ import theme from "./utils/theme.jsx";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import Appbar from "./components/AppBar.jsx";
 import RenderComponent from "./components/RenderBased.jsx";
+import Footer from "./components/Footer.jsx";
 
 class App extends Component {
   state = {
@@ -23,6 +24,7 @@ class App extends Component {
           <body className="App-content">
             <RenderComponent {...this.state} {...this.changingFunctions} />
           </body>
+          <Footer classes={theme} />
         </div>
       </MuiThemeProvider>
     );
