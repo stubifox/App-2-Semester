@@ -7,6 +7,12 @@ import pouring from "../images/weather-pouring.svg";
 import lightning from "../images/weather-lightning.svg";
 import foggy from "../images/weather-fog.svg";
 import fetchData from "./FetchAnyData";
+import cloudBackground from "../images/clouds.png";
+import rainyBackground from "../images/rain.png";
+import sunnyBackground from "../images/sunny.png";
+import foggyBackground from "../images/foggy.png";
+import thunderBackground from "../images/thunder.png";
+import snowyBackground from "../images/snowy.png";
 
 export const getLocation = setCoordinates => {
   if (!navigator.geolocation) {
@@ -48,11 +54,17 @@ const getTypeOfCall = props => {
   }
 };
 
-const setWeatherIcon = (iconId, changeWeatherState) => {
+const setWeatherIcon = (
+  iconId,
+  changeWeatherState,
+  changeWeatherBackground
+) => {
   switch (iconId) {
     case "01d":
     case "01n":
       changeWeatherState(sunny);
+      changeWeatherBackground(sunnyBackground);
+      
       break;
 
     case "02d":
@@ -60,40 +72,51 @@ const setWeatherIcon = (iconId, changeWeatherState) => {
     case "04d":
     case "04n":
       changeWeatherState(partlyCloudy);
+      changeWeatherBackground(cloudBackground);
       break;
 
     case "03d":
     case "03n":
       changeWeatherState(cloudy);
+      changeWeatherBackground(cloudBackground);
       break;
 
     case "09d":
     case "09n":
       changeWeatherState(rainy);
+      changeWeatherBackground(rainyBackground);
       break;
 
     case "10d":
     case "10n":
       changeWeatherState(pouring);
+      changeWeatherBackground(rainyBackground);
+
       break;
 
     case "11d":
     case "11n":
       changeWeatherState(lightning);
+      changeWeatherBackground(thunderBackground);
+
       break;
 
     case "13d":
     case "13n":
       changeWeatherState(snowy);
+      changeWeatherBackground(snowyBackground);
+
       break;
 
     case "50d":
     case "50n":
       changeWeatherState(foggy);
+      changeWeatherBackground(foggyBackground);
       break;
 
     default:
       changeWeatherState(sunny);
+      changeWeatherBackground(sunnyBackground);
       break;
   }
 };
@@ -106,7 +129,8 @@ const handleData = async props => {
     changeWeatherState,
     setDataCity,
     displayCity,
-    latitude
+    latitude,
+    changeWeatherBackground
   } = props;
   const data = await makeAPICallAndReturnData(props);
   if (displayLocation && latitude !== undefined) {
@@ -116,7 +140,11 @@ const handleData = async props => {
     setDataCity(data.name);
   }
   try {
-    setWeatherIcon(data.weather[0].icon, changeWeatherState);
+    setWeatherIcon(
+      data.weather[0].icon,
+      changeWeatherState,
+      changeWeatherBackground
+    );
     changeTemperature(data.main.temp_max);
   } catch (error) {
     console.error(error);

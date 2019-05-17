@@ -4,6 +4,7 @@ import theme from "./utils/theme.jsx";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import Appbar from "./components/AppBar.jsx";
 import RenderComponent from "./components/RenderBased.jsx";
+import CardFramework from "./components/CardFramework.jsx";
 
 class App extends Component {
   state = {
