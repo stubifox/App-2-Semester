@@ -1,19 +1,27 @@
 import React, { Component } from "react";
 import celsiusImg from "../images/temperature-celsius.svg";
 import handleData, { getLocation } from "../utils/WeatherLogic.js";
-import "../App.css";
+import CardFramework from "./CardFramework.jsx";
 
 const Temperature = props => {
-  const { displayCity, displayLocation } = props;
+  const {
+    displayCity,
+    weatherSrc,
+    dataCity,
+    coordinateCity,
+    celsius,
+    background
+  } = props;
   return (
     <div style={{ verticalAlign: "middle" }}>
       <div style={{ margin: "auto" }}>
-        {displayCity && <h1>{props.dataCity}</h1>}
-        {displayLocation && <h1>{props.coordinateCity}</h1>}
-        <h1 style={{ color: "black" }}>
-          {props.celsius}
-          <img width="50ch" alt="celsius" src={celsiusImg} />
-        </h1>
+        <CardFramework
+          city={displayCity ? dataCity : coordinateCity}
+          temperature={celsius}
+          celsiusImg={celsiusImg}
+          weatherSrc={weatherSrc}
+          background={background}
+        />
       </div>
     </div>
   );
@@ -25,16 +33,16 @@ export default class Weather extends Component {
     coordinateCity: String,
     latitude: undefined,
     longitude: undefined,
-    dataCity: String
+    dataCity: String,
+    background: String
   };
 
   render() {
-    const { weatherSrc, temp } = this.state;
+    const { temp } = this.state;
 
     return (
       <div>
         <div>
-          <img width="50ch" alt="weather" src={weatherSrc} />
           <Temperature
             celsius={Math.round(temp)}
             {...this.props}
@@ -89,6 +97,11 @@ export default class Weather extends Component {
     },
     setDataCity: dataCity => {
       this.setState({ dataCity });
+    },
+    changeWeatherBackground: background => {
+      this.setState({ background }, () =>
+        console.log(`background in State ${background}`)
+      );
     }
   };
 }

@@ -15,7 +15,8 @@ const RenderComponent = props => {
         <div
           style={{
             display: "flex",
-            flexDirection: "row"
+            flexDirection: "row",
+            justifyContent: "space-between"
           }}
         >
           <Weather {...props} displayLocation />
