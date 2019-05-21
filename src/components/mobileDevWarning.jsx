@@ -43,7 +43,7 @@ const DeviceWarning = () => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} color="primary">
+            <Button variant="contained" color="primary" onClick={handleClose}>
               I understand
             </Button>
           </DialogActions>
