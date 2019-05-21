@@ -3,10 +3,10 @@ import Button from "@material-ui/core/Button";
 import AnimatedInput from "./AnimatedInputField.jsx";
 import Iframe from "./Iframe.jsx";
 import { LoyaltyOutlined } from "@material-ui/icons";
+const default_url = "https://vorlesungsplan.dhbw-mannheim.de/";
 
 const CourseAsker = props => {
   const { displayLoadingBar } = props;
-  const default_url = "https://vorlesungsplan.dhbw-mannheim.de/";
   const [courseUrl, setCourseUrl] = useState(default_url);
   const [clicked, setClicked] = useState(false);
   const [inputHandler, handleInput] = useState(String);
@@ -21,7 +21,7 @@ const CourseAsker = props => {
       setCourseUrl(storage);
       setSelected(true);
     }
-  });
+  }, [courseUrl, changingFunctions]);
 
   const changingFunctions = {
     validateCourseUrl: () => {
@@ -45,13 +45,10 @@ const CourseAsker = props => {
           color="primary"
           onClick={() => {
             setClicked(false);
+            setCourseUrl(default_url);
             setSelected(false, () => {
-              console.log(selected);
             });
             localStorage.clear();
-            console.log("====================================");
-            console.log(`clicked: ${clicked} and selected is ${selected}`);
-            console.log("====================================");
           }}
         >
           change Course

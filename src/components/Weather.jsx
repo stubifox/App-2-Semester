@@ -99,9 +99,7 @@ export default class Weather extends Component {
       this.setState({ dataCity });
     },
     changeWeatherBackground: background => {
-      this.setState({ background }, () =>
-        console.log(`background in State ${background}`)
-      );
+      this.setState({ background });
     }
   };
 }

@@ -5,18 +5,21 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import Appbar from "./components/AppBar.jsx";
 import RenderComponent from "./components/RenderBased.jsx";
 import Footer from "./components/Footer.jsx";
+import DeviceWarning from "./components/mobileDevWarning.jsx";
 
 class App extends Component {
   state = {
     tab: 0,
     weatherCity: "Mannheim",
     inputHandler: String,
-    isLoading: false
+    isLoading: false,
+    mobile: false
   };
 
   render() {
     return (
       <MuiThemeProvider theme={theme}>
+        <DeviceWarning />
         <div className="App">
           <header className="App-header">
             <Appbar {...this.changingFunctions} {...this.state} />

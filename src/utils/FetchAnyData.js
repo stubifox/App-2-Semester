@@ -2,7 +2,6 @@ const fetchData = async (url, isText) => {
   if (url.includes("undefined")) {
     return;
   }
-  console.log(url);
   let res;
   try {
     res = await fetch(url);

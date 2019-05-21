@@ -32,7 +32,7 @@ export const getLocation = setCoordinates => {
 
 const makeAPICallAndReturnData = async props => {
   const API_KEY = "a9f5769786f635c0fd56e2e3564faefc";
-  const apiCallUrl = `https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?${await getTypeOfCall(
+  const apiCallUrl = `https://api.openweathermap.org/data/2.5/weather?${await getTypeOfCall(
     props
   )}&units=metric&APPID=${API_KEY}`;
   return fetchData(apiCallUrl, false);
