@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/App-2-Semester/static/css/main.024487db.chunk.css",
+    "main.js": "/App-2-Semester/static/js/main.ade87092.chunk.js",
+    "main.js.map": "/App-2-Semester/static/js/main.ade87092.chunk.js.map",
+    "runtime~main.js": "/App-2-Semester/static/js/runtime~main.62a5e199.js",
+    "runtime~main.js.map": "/App-2-Semester/static/js/runtime~main.62a5e199.js.map",
+    "static/js/2.4c09892c.chunk.js": "/App-2-Semester/static/js/2.4c09892c.chunk.js",
+    "static/js/2.4c09892c.chunk.js.map": "/App-2-Semester/static/js/2.4c09892c.chunk.js.map",
+    "index.html": "/App-2-Semester/index.html",
+    "precache-manifest.c9e6f4976fce0263b0f24466c1485bf0.js": "/App-2-Semester/precache-manifest.c9e6f4976fce0263b0f24466c1485bf0.js",
+    "service-worker.js": "/App-2-Semester/service-worker.js",
+    "static/css/main.024487db.chunk.css.map": "/App-2-Semester/static/css/main.024487db.chunk.css.map",
+    "static/media/Rocket.png": "/App-2-Semester/static/media/Rocket.77f9465a.png",
+    "static/media/clouds.png": "/App-2-Semester/static/media/clouds.b0b9fc0f.png",
+    "static/media/foggy.png": "/App-2-Semester/static/media/foggy.b2969c1c.png",
+    "static/media/rain.png": "/App-2-Semester/static/media/rain.de4648d0.png",
+    "static/media/snowy.png": "/App-2-Semester/static/media/snowy.4518ab2e.png",
+    "static/media/sunny.png": "/App-2-Semester/static/media/sunny.4b1e4368.png",
+    "static/media/temperature-celsius.svg": "/App-2-Semester/static/media/temperature-celsius.b6fd8540.svg",
+    "static/media/thunder.png": "/App-2-Semester/static/media/thunder.183e63fa.png",
+    "static/media/weather-cloudy.svg": "/App-2-Semester/static/media/weather-cloudy.5114ea50.svg",
+    "static/media/weather-fog.svg": "/App-2-Semester/static/media/weather-fog.03386151.svg",
+    "static/media/weather-lightning.svg": "/App-2-Semester/static/media/weather-lightning.a3ca1232.svg",
+    "static/media/weather-partlycloudy.svg": "/App-2-Semester/static/media/weather-partlycloudy.decb4673.svg",
+    "static/media/weather-pouring.svg": "/App-2-Semester/static/media/weather-pouring.8266bfd8.svg",
+    "static/media/weather-rainy.svg": "/App-2-Semester/static/media/weather-rainy.49de1d6e.svg",
+    "static/media/weather-snowy.svg": "/App-2-Semester/static/media/weather-snowy.37dc85d1.svg",
+    "static/media/weather-sunny.svg": "/App-2-Semester/static/media/weather-sunny.ba376134.svg"
+  }
+}
